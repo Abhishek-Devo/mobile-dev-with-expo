@@ -1,0 +1,55 @@
+import { useState } from "react"
+import { Image, Pressable, Text, TextInput, View } from "react-native"
+
+export default function HomeScreen(){
+
+  const [name,setName]=useState("")
+
+  return (
+    <View>
+      <Text numberOfLines={3}>Hello,Abhishek Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, inventore eius. Ex, quae animi, non eveniet eligendi at, sit aliquam iste ducimus illum laborum. Veniam aspernatur optio praesentium voluptates quaerat, officiis velit.this is extra </Text>
+    
+    <Image
+    source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQD9F1n_X68rwTc0-hX-mAN2VwAVsnT7MX5u3xyG2ydA&s=10"}}
+    width={200}
+    height={200}
+    blurRadius={30}
+
+    />
+
+    {/* local image */}
+    <Image source={require("@/assets/images/alan-hu.jpg")} style={{height:200,width:200}}/>
+
+    <TextInput
+     placeholder="Enter your naam"
+      value={name}
+       onChangeText={setName}
+       placeholderTextColor={"red"}
+       style={{
+        borderWidth:1,
+        borderColor:"#ddd",
+        marginTop:10,
+        fontSize:16
+       }}
+       />
+
+
+       <Pressable onPress={()=>alert("I'm Pressed, aahhhhh ")}>
+        <Text>Press Me!</Text>
+        </Pressable>
+
+        {/* detail */}
+        <Pressable
+        onPress={()=>alert("pressed")}
+        style={
+          ({pressed})=>({backgroundColor:pressed?"green":"yellow"})
+        }
+        >
+          {/* text change on press and normal  */}
+          {({pressed})=>
+            (pressed?<Text>Pressed...</Text>:<Text>Press Me!</Text>)
+          }
+        </Pressable>
+    </View>
+  )
+}

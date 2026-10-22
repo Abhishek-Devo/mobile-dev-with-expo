@@ -1,0 +1,30 @@
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+
+const Users = [
+  { id: "1", name: "Rahul", role: "Manager" },
+  { id: "2", name: "Priya", role: "Developer" },
+  { id: "3", name: "Amit", role: "Designer" },
+  { id: "4", name: "Sneha", role: "Developer" },
+  { id: "5", name: "Vikram", role: "Manager" }
+];
+
+const HomeScreen = () => {
+
+  
+  return (
+    <FlatList style={{backgroundColor:"red"}}
+    horizontal
+    data={Users}
+    contentContainerStyle={{padding:16,backgroundColor:"green"}}
+    // key must be string i guess it giving me red lines when id was number
+    keyExtractor={(item)=>item.id} 
+    renderItem={({item})=>(<Text>{item.name}</Text>)}
+    ItemSeparatorComponent={()=>(<View style={{height:1,backgroundColor:'black'}}/>)}
+    />
+  )
+}
+
+export default HomeScreen
+
+const styles = StyleSheet.create({})

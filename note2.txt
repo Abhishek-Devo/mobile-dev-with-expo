@@ -1,0 +1,46 @@
+import React, { useState } from 'react';
+import { Button, ScrollView, StyleSheet, Switch, Text } from 'react-native';
+
+const HomeScreen = () => {
+
+  let items = Array.from({length:40},(_,i)=>`Item ${i+1}`);
+
+  const [isDarkMode,setIsDarkMode]=useState(false)
+
+  return (
+    <ScrollView
+    style={{
+      flex:1,
+      backgroundColor:"red"
+    }}
+
+    contentContainerStyle={{
+      padding:16,
+      alignItems:'center',
+      // for ios shadow
+      shadowColor:'black',
+      shadowOpacity:0.05,
+      shadowRadius:4,
+      // android shadow 
+      elevation:2
+    }}
+    >
+      {items.map((item)=>(
+        <Text key={item}>{item}</Text>
+      ))}
+
+
+      <Button title="this is button" color={"green"} onPress={()=>alert("button Pressed")}/>
+
+      <Switch value={isDarkMode} 
+      onValueChange={setIsDarkMode}
+      trackColor={{false:"#ddd",true:"#6c63ff"}}
+      thumbColor={"yellow"}
+      />
+    </ScrollView>
+  )
+}
+
+export default HomeScreen
+
+const styles = StyleSheet.create({})
