@@ -1,12 +1,31 @@
-import { Slot } from "expo-router";
-import { Text, View } from "react-native";
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Header</Text>
-      <Slot />
-      <Text>Footer</Text>
-    </View>
+    <Stack>
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={{ title: "Home" }} />
+      <Stack.Screen name="profile" />
+    </Stack>
   );
 }
+
+
+// export default function RootLayout() {
+//   const isLoggedIn = true;
+//   return (
+//     <Stack>
+
+//       <Stack.Protected guard={!isLoggedIn}>
+
+//         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+//       </Stack.Protected>
+
+//       <Stack.Protected guard={isLoggedIn}>
+//         <Stack.Screen name="(drawer)"  options={{headerShown:false}}/>
+//         {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
+//       </Stack.Protected>
+
+//     </Stack>
+//   )
+// }
